@@ -1,4 +1,5 @@
 import UIKit
+import FinanceHome
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,11 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .white
+        let viewController = FinanceHomeViewController()
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
-
         return true
     }
 

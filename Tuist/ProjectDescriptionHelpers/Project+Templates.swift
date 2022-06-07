@@ -6,26 +6,29 @@ import ProjectDescription
 /// See https://docs.tuist.io/guides/helpers/
 
 extension Project {
-    /// Helper function to create the Project for this ExampleApp
+
+    // MARK: - Public
+    
     public static func app(
         name: String,
         platform: Platform,
-        additionalTargets: [String]
+        packages: [Package] = [],
+        targetDependencies: [TargetDependency]
     ) -> Project {
         let targets = makeAppTargets(
             name: name,
             platform: platform,
-            dependencies: additionalTargets.map {
-                TargetDependency.target(name: $0)
-            }
+            dependencies: targetDependencies
         )
         return Project(
             name: name,
             organizationName: "tuist.io",
+            packages: packages,
             targets: targets
         )
     }
 
+    
     // MARK: - Private
 
     private static func makeAppTargets(
